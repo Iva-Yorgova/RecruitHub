@@ -40,9 +40,9 @@
                     Current Skills
                 </button>
 
-                @foreach (var skill in Model.Set)
+                @foreach (var skill in Model.CandidateSkills)
                 {
-                    <p>@skill</p>
+                    <p>@skill.Name</p>
                 }
             </div>
         </div>

@@ -20,6 +20,7 @@
 	  <None Remove="Views\Candidates\Edit.cshtml" />
 	  <None Remove="Views\Jobs\All.cshtml" />
 	  <None Remove="Views\Jobs\Create.cshtml" />
+	  <None Remove="Views\Jobs\Details.cshtml" />
 	  <None Remove="Views\Skills\All.cshtml" />
 	  <None Remove="Views\_ViewImports.cshtml" />
 	</ItemGroup>

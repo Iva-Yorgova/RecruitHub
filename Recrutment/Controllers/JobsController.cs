@@ -62,27 +62,31 @@ namespace Recrutment.Controllers
                 {
                     job.JobSkills.Add(new JobSkill { Name = model.Skill });
                 }
-
-                //var skill = this.data.JobsSkills
-                //.FirstOrDefault(s => s.Name == model.Skill);
-                //
-                //if (skill != null)
-                //{
-                //    job.JobSkills.Add(skill);
-                //}
-                //else
-                //{
-                //    job.JobSkills.Add(new JobSkill { Name = model.Skill });
-                //}
             }
-
-                
 
             this.data.Jobs.Add(job);
 
             this.data.SaveChanges();
 
             return Redirect("/Jobs/All");
+        }
+
+        public HttpResponse Details(string id)
+        {
+            var job = this.data
+                .Jobs
+                .Where(j => j.Id == id)
+                .Select(j => new JobListingViewModel
+                {
+                    Id = j.Id,
+                    Title = j.Title,
+                    Description = j.Description,
+                    Salary = j.Salary,
+                    JobSkills = j.JobSkills
+                })
+                .FirstOrDefault();
+
+            return View(job);
         }
 
     }
