@@ -48,7 +48,7 @@ namespace Recrutment.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 Salary = model.Salary  
-            };
+            }; 
 
             if (model.Skill != null)
             {
@@ -61,6 +61,28 @@ namespace Recrutment.Controllers
                 else
                 {
                     job.JobSkills.Add(new JobSkill { Name = model.Skill });
+                }
+            }
+
+            var jobSkills = job.JobSkills.Select(j => j.Name).ToList();
+
+            var candidates = this.data.Candidates
+                .Where(c => c.CandidateSkills.Any(s => jobSkills.Contains(s.Name))).ToList();
+
+            if (candidates.Count() > 0)
+            {
+                foreach (var candidate in candidates)
+                {
+                    var interview = new Interview
+                    {
+                        Date = model.InterviewDate,
+                        CandidateId = candidate.Id,
+                        Candidate = candidate,
+                        RecruiterId = candidate.RecruiterId,
+                        Recruiter = candidate.Recruiter,
+                        Job = job
+                    };
+                    this.data.Interviews.Add(interview);
                 }
             }
 

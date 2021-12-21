@@ -18,6 +18,7 @@
 	  <None Remove="Views\Candidates\AddSkill.cshtml" />
 	  <None Remove="Views\Candidates\Details.cshtml" />
 	  <None Remove="Views\Candidates\Edit.cshtml" />
+	  <None Remove="Views\Interviews\All.cshtml" />
 	  <None Remove="Views\Jobs\All.cshtml" />
 	  <None Remove="Views\Jobs\Create.cshtml" />
 	  <None Remove="Views\Jobs\Details.cshtml" />

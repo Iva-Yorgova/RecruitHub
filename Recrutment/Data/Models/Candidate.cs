@@ -39,7 +39,5 @@ namespace Recrutment.Data.Models
 
         public ICollection<CandidateSkill> CandidateSkills { get; set; } = new List<CandidateSkill>();
 
-        public ICollection<Interview> Interviews { get; set; } = new List<Interview>();
-
     }
 }

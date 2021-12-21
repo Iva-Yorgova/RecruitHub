@@ -38,12 +38,6 @@
                 .HasForeignKey(r => r.RecruiterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder
-                .Entity<Interview>()
-                .HasOne(i => i.Candidate)
-                .WithMany(c => c.Interviews)
-                .HasForeignKey(c => c.CandidateId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .Entity<Interview>()
