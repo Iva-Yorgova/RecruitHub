@@ -1,0 +1,62 @@
+﻿<h1 class="mt-5 text-center mt-2">Edit Candidate</h1>
+<hr class="bg-primary w-75">
+<form class="mb-5 pb-5 mx-auto w-50" method="post">
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">First Name</label>
+        </div>
+        <input type="text" class="form-control" id="name" name="firstName" value="@Model.FirstName" />
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">Last Name</label>
+        </div>
+        <input type="text" class="form-control" id="name" name="lastName" value="@Model.LastName" />
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">Email</label>
+        </div>
+        <input type="text" class="form-control" id="name" name="email" value="@Model.Email" />
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">Bio</label>
+        </div>
+        <textarea type="text" class="form-control" id="name" name="bio" value="@Model.Bio">@Model.Bio</textarea>
+    </div>
+    <div class="form-group">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">Birthdate</label>
+        </div>
+        <input type="text" class="form-control" id="name" name="birthDate" value="@Model.BirthDate" />
+    </div>
+
+    <div class="card text-center">
+        
+        <div>
+            <div>
+                <button type="button" class="list-group-item list-group-item-action active bg-info mb-2">
+                    Current Skills
+                </button>
+
+                @foreach (var skill in Model.Set)
+                {
+                    <p>@skill</p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group mt-3">
+        <div class="text-dark d-flex justify-content-center">
+            <label for="name" class="h3 mb-2">Add Skill</label>
+        </div>
+        <input type="text" class="form-control" id="name" name="skill"  />
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-block btn-primary text-white mb-3">Save</button>
+    </div>
+</form>

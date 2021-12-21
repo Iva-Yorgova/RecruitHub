@@ -1,0 +1,60 @@
+﻿<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="mb-5 pb-5 col-lg-10 offset-lg-1">
+                <div class="page-header text-center">
+                    <h2 id="tables">Candidates</h2>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-block btn-primary text-white mb-3" href="/Candidates/Create">Create Candidate</a>
+                </div>
+
+                <div class="component">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Birthdate</th>
+                                <th scope="col">Skills</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var candidate in Model)
+                            {
+                            <tr class="table-light">
+                                <th scope="row">@candidate.FirstName</th>
+                                <td>@candidate.LastName</td>
+                                <td>@candidate.Email</td>
+                                <td>@candidate.BirthDate</td>
+               
+                                <td>
+                                    <ul>
+                                        @foreach (var skill in candidate.CandidateSkills)
+                                        {
+                                           <li>@skill.Name</li>
+                                        }
+                                    </ul>
+                                </td>
+                                        <td>
+                                            <a class="btn btn-block btn-primary text-white mb-3" href="/Skills/Add?id=@candidate.Id">Add Skill</a>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-block btn-primary text-white mb-3" href="/Candidates/Details?id=@candidate.Id">Details</a>
+                                        </td>
+
+
+                                    </tr>
+                             }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
