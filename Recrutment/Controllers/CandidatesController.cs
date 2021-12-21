@@ -44,12 +44,23 @@ namespace Recrutment.Controllers
         {
             // Validation!
 
-            var recruiter = new Recruiter
+            Recruiter recruiter;
+
+            if (!this.data.Recruiters.Any(r => r.Name == model.RecruiterName))
             {
-                Name = model.RecruiterName,
-                Epost = model.RecruiterEmail,
-                Country = model.RecruiterCountry
-            };
+                recruiter = new Recruiter
+                {
+                    Name = model.RecruiterName,
+                    Epost = model.RecruiterEmail,
+                    Country = model.RecruiterCountry
+                };
+                this.data.Recruiters.Add(recruiter);
+            }
+            else
+            {
+                recruiter = this.data.Recruiters.FirstOrDefault(r => r.Name == model.RecruiterName);
+                recruiter.ExperienceLevel++;
+            }
 
             var candidate = new Candidate
             {
@@ -77,8 +88,7 @@ namespace Recrutment.Controllers
 
             recruiter.Candidates.Add(candidate);
 
-            this.data.Candidates.Add(candidate);
-            this.data.Recruiters.Add(recruiter);
+            this.data.Candidates.Add(candidate);          
 
             this.data.SaveChanges();
 
