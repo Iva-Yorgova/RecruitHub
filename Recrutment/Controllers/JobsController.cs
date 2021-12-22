@@ -87,6 +87,7 @@ namespace Recrutment.Controllers
                         .FirstOrDefault(r => r.Candidates.Any(c => c.FirstName == candidate.FirstName));
 
                     recruiter.FreeInterviewSlots--;
+                    recruiter.ExperienceLevel++;
 
                     this.data.Interviews.Add(interview);
                 }
@@ -100,6 +101,25 @@ namespace Recrutment.Controllers
         }
 
         public HttpResponse Details(string id)
+        {
+            var job = this.data
+                .Jobs
+                .Where(j => j.Id == id)
+                .Select(j => new JobListingViewModel
+                {
+                    Id = j.Id,
+                    Title = j.Title,
+                    Description = j.Description,
+                    Salary = j.Salary,
+                    JobSkills = j.JobSkills
+                })
+                .FirstOrDefault();
+
+            return View(job);
+        }
+
+        [HttpPost]
+        public HttpResponse Delete(string id)
         {
             var job = this.data
                 .Jobs

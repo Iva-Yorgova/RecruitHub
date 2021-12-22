@@ -28,25 +28,24 @@
                                 <th scope="row">@job.Title</th>
                                 <td>@job.Description</td>
                                 <td>@job.Salary</td>
-               
+
                                 <td>
                                     <ul>
                                         @foreach (var skill in job.JobSkills)
                                         {
-                                           <li>@skill.Name</li>
-                                        }
+                            <li>@skill.Name</li>}
                                     </ul>
                                 </td>
-                                        <td>
-                                            <a class="btn btn-block btn-primary text-white mb-3" href="/Skills/Add?id=@job.Id">Add Skill</a>
-                                        </td>
+                                <td>
+                                    <a class="btn btn-block btn-primary text-white mb-3" href="/Skills/Add?id=@job.Id">Add Skill</a>
+                                </td>
 
-                                        <td>
-                                            <a class="btn btn-block btn-primary text-white mb-3" href="/Jobs/Details?id=@job.Id">Details</a>
-                                        </td>
+                                <td>
+                                    <a class="btn btn-block btn-primary text-white mb-3" href="/Jobs/Details?id=@job.Id">Details</a>
+                                </td>
 
-
-                                    </tr>
+                      
+                            </tr>
                              }
 
                         </tbody>

@@ -16,7 +16,9 @@
         public DbSet<Interview> Interviews { get; set; }
 
         public DbSet<Skill> Skills { get; set; }
+
         public DbSet<CandidateSkill> CandidatesSkills { get; set; }
+
         public DbSet<JobSkill> JobsSkills { get; set; }
 
 
