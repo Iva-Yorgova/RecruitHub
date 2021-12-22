@@ -33,5 +33,26 @@ namespace Recrutment.Controllers
 
             return View(recruiters);
         }
+
+        public HttpResponse Details(string id)
+        {
+            var recruiter = this.data
+                .Recruiters
+                .Where(r => r.Id == id)
+                .Select(r => new RecruiterListingViewModel
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    Epost = r.Epost,
+                    Country = r.Country,
+                    ExperienceLevel = r.ExperienceLevel,
+                    FreeInterviewSlots = r.FreeInterviewSlots,
+                    Candidates = r.Candidates,
+                    Interviews = r.Interviews                   
+                })
+                .FirstOrDefault();
+
+            return View(recruiter);
+        }
     }
 }

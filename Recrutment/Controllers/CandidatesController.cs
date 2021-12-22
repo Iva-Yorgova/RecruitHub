@@ -43,11 +43,29 @@ namespace Recrutment.Controllers
         [HttpPost]
         public HttpResponse Create(CreateCandidateFormModel model)
         {
-            // Validation!
+            if (this.data.Candidates
+                .Any(c => c.FirstName == model.FirstName && 
+                c.LastName == model.LastName))
+            {
+                return Error("Candidate already exists!");
+            }
 
-            Recruiter recruiter;
+            if (string.IsNullOrEmpty(model.FirstName) || 
+                string.IsNullOrEmpty(model.LastName) ||
+                string.IsNullOrEmpty(model.Email) ||
+                string.IsNullOrEmpty(model.Bio) ||
+                string.IsNullOrEmpty(model.BirthDate) ||
+                string.IsNullOrEmpty(model.Skill) ||
+                string.IsNullOrEmpty(model.RecruiterName) ||
+                string.IsNullOrEmpty(model.RecruiterEmail) ||
+                string.IsNullOrEmpty(model.RecruiterCountry))
+            {
+                return Error("All fields are required!");
+            }
 
-            if (!this.data.Recruiters.Any(r => r.Name == model.RecruiterName))
+            var recruiter = this.data.Recruiters.FirstOrDefault(r => r.Name == model.RecruiterName);
+
+            if (recruiter == null)
             {
                 recruiter = new Recruiter
                 {
@@ -58,8 +76,7 @@ namespace Recrutment.Controllers
                 this.data.Recruiters.Add(recruiter);
             }
             else
-            {
-                recruiter = this.data.Recruiters.FirstOrDefault(r => r.Name == model.RecruiterName);
+            {              
                 recruiter.ExperienceLevel++;    
             }
 
@@ -73,22 +90,18 @@ namespace Recrutment.Controllers
                 RecruiterId = recruiter.Id
             };
 
-            if (model.Skill != null)
+            if (!this.data.Skills.Any(s => s.Name == model.Skill))
             {
-                if (!this.data.Skills.Any(s => s.Name == model.Skill))
-                {
-                    var skill = new CandidateSkill { Name = model.Skill };
-                    candidate.CandidateSkills.Add(skill);
-                    this.data.Skills.Add(new Skill { Name = model.Skill });
-                }
-                else
-                {
-                    candidate.CandidateSkills.Add(new CandidateSkill { Name = model.Skill });
-                }               
-            }        
+                var skill = new CandidateSkill { Name = model.Skill };
+                candidate.CandidateSkills.Add(skill);
+                this.data.Skills.Add(new Skill { Name = model.Skill });
+            }
+            else
+            {
+                candidate.CandidateSkills.Add(new CandidateSkill{ Name = model.Skill });
+            }               
 
             recruiter.Candidates.Add(candidate);
-
 
             this.data.Candidates.Add(candidate);          
 

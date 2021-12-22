@@ -1,10 +1,21 @@
 ﻿<div class="container">
-    Your request is not valid. Errors:
+    <div class="section">
+        <div class="row">
+            <div class="mb-5 pb-5 col-md-8 offset-md-2">
 
-    <ul>
-        @foreach (var error in Model)
-        {
+                <div class="page-header text-center">
+                    <h2 id="tables">Your request is not valid. Errors:</h2>
+                </div>
+
+                <div class="alert-info p-2 mt-3 mb-3 text-center text-decoration-none">
+                    <ul>
+                        @foreach (var error in Model)
+                        {
             <li>@error</li>
-        }
-    </ul>
+}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

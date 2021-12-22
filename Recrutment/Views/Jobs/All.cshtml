@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿
+<div class="container">
     <div class="section">
         <div class="row">
             <div class=" mb-5 pb-5 col-lg-10 offset-lg-1">
@@ -24,29 +25,32 @@
                         <tbody>
                             @foreach (var job in Model)
                             {
-                            <tr class="table-light">
-                                <th scope="row">@job.Title</th>
-                                <td>@job.Description</td>
-                                <td>@job.Salary</td>
+                                <tr class="table-light">
+                                    <th scope="row">@job.Title</th>
+                                    <td>@job.Description</td>
+                                    <td>@job.Salary</td>
 
-                                <td>
-                                    <ul>
-                                        @foreach (var skill in job.JobSkills)
-                                        {
-                            <li>@skill.Name</li>}
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a class="btn btn-block btn-primary text-white mb-3" href="/Skills/Add?id=@job.Id">Add Skill</a>
-                                </td>
+                                    <td>
+                                        <ul>
+                                            @foreach (var skill in job.JobSkills)
+                                            {
+                                                <li>@skill.Name</li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-block btn-info text-white mb-3" href="/Skills/Add?id=@job.Id">Add Skill</a>
+                                    </td>
 
-                                <td>
-                                    <a class="btn btn-block btn-primary text-white mb-3" href="/Jobs/Details?id=@job.Id">Details</a>
-                                </td>
+                                    <td>
+                                        <a class="btn btn-block btn-primary text-white mb-3" href="/Jobs/Details?id=@job.Id">Details</a>
+                                    </td>
 
-                      
-                            </tr>
-                             }
+                                    <td>
+                                        <a class="btn btn-block btn-danger text-white mb-3" href="/Jobs/Delete?id=@job.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
 
                         </tbody>
                     </table>

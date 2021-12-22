@@ -19,7 +19,7 @@ namespace Recrutment.ViewModels.Jobs
 
         public string Skill { get; set; }
 
-        public ICollection<JobSkill> Skills { get; set; } = new List<JobSkill>();
+        public ICollection<JobSkill> JobSkills { get; set; } = new List<JobSkill>();
 
         public string InterviewDate { get; set; }
 

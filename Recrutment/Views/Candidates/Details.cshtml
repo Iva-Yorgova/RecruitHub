@@ -1,7 +1,18 @@
-﻿<div class="container">
+﻿
+
+<div class="container">
     <div class="section">
         <div class="row">
             <div class="mb-5 pb-5 col-md-8 offset-md-2">
+
+                <nav aria-label="breadcrumb mt-5 mb-5">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Candidates/All">Candidates</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Details</li>
+                    </ol>
+                </nav>
+
                 <div class="page-header text-center mb-5 mt-5">
                     <h2 id="tables">Candidate Details</h2>
                 </div>
@@ -24,11 +35,11 @@
                             <button type="button" class="list-group-item list-group-item-action active bg-info">
                                 Skills
                             </button>
-                            
-                                @foreach (var skill in Model.CandidateSkills)
-                                {
-                                <button type="button" class="list-group-item list-group-item-action" disabled>@skill.Name</button>
-                                }         
+
+                            @foreach (var skill in Model.CandidateSkills)
+                            {
+                <button type="button" class="list-group-item list-group-item-action" disabled>@skill.Name</button>
+                }
                         </div>
 
                         <a href="/Candidates/Edit?id=@Model.Id" class="btn btn-primary mt-5">Edit</a>

@@ -42,26 +42,35 @@ namespace Recrutment.Controllers
         public HttpResponse Create(CreateJobFormModel model)
         {
             // Validation!
+            if (string.IsNullOrEmpty(model.Title) ||
+                string.IsNullOrEmpty(model.Description) || 
+                string.IsNullOrEmpty(model.Skill) ||
+                string.IsNullOrEmpty(model.InterviewDate))
+            {
+                return Error("All fields are required!");
+            }
+
+            if (model.Salary <= 0)
+            {
+                return Error("Salary must be number above zero!");
+            }
 
             var job = new Job
-            {
+            {  
                 Title = model.Title,
                 Description = model.Description,
                 Salary = model.Salary  
-            }; 
+            };
 
-            if (model.Skill != null)
+            if (!this.data.Skills.Any(s => s.Name == model.Skill))
             {
-                if (!this.data.Skills.Any(s => s.Name == model.Skill))
-                {
-                    var skill = new JobSkill { Name = model.Skill };
-                    job.JobSkills.Add(skill);
-                    this.data.Skills.Add(new Skill { Name = model.Skill });
-                }
-                else
-                {
-                    job.JobSkills.Add(new JobSkill { Name = model.Skill });
-                }
+                var skill = new JobSkill { Name = model.Skill };
+                job.JobSkills.Add(skill);
+                this.data.Skills.Add(new Skill { Name = model.Skill });
+            }
+            else
+            {
+                job.JobSkills.Add(new JobSkill { Name = model.Skill });
             }
 
             var jobSkills = job.JobSkills.Select(j => j.Name).ToList();
@@ -73,23 +82,26 @@ namespace Recrutment.Controllers
             {
                 foreach (var candidate in candidates)
                 {
-                    var interview = new Interview
-                    {
-                        Date = model.InterviewDate,
-                        CandidateId = candidate.Id,
-                        Candidate = candidate,
-                        RecruiterId = candidate.RecruiterId,
-                        Recruiter = candidate.Recruiter,
-                        Job = job
-                    };
-
                     var recruiter = this.data.Recruiters
                         .FirstOrDefault(r => r.Candidates.Any(c => c.FirstName == candidate.FirstName));
 
-                    recruiter.FreeInterviewSlots--;
-                    recruiter.ExperienceLevel++;
+                    if (recruiter.FreeInterviewSlots > 0)
+                    {
+                        var interview = new Interview
+                        {
+                            Date = model.InterviewDate,
+                            CandidateId = candidate.Id,
+                            Candidate = candidate,
+                            RecruiterId = candidate.RecruiterId,
+                            Recruiter = candidate.Recruiter,
+                            Job = job
+                        };
 
-                    this.data.Interviews.Add(interview);
+                        recruiter.FreeInterviewSlots--;
+                        recruiter.ExperienceLevel++;
+
+                        this.data.Interviews.Add(interview);
+                    }                   
                 }
             }
 
@@ -118,24 +130,7 @@ namespace Recrutment.Controllers
             return View(job);
         }
 
-        [HttpPost]
-        public HttpResponse Delete(string id)
-        {
-            var job = this.data
-                .Jobs
-                .Where(j => j.Id == id)
-                .Select(j => new JobListingViewModel
-                {
-                    Id = j.Id,
-                    Title = j.Title,
-                    Description = j.Description,
-                    Salary = j.Salary,
-                    JobSkills = j.JobSkills
-                })
-                .FirstOrDefault();
-
-            return View(job);
-        }
+    
 
     }
 }
