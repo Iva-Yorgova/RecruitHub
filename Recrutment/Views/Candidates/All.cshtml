@@ -14,23 +14,21 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Birthdate</th>
+                                <th scope="col">Recruiter</th>
                                 <th scope="col">Skills</th>
-
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var candidate in Model)
                             {
                             <tr class="table-light">
-                                <th scope="row">@candidate.FirstName</th>
-                                <td>@candidate.LastName</td>
+                                <th scope="row">@candidate.FirstName @candidate.LastName</th>
                                 <td>@candidate.Email</td>
                                 <td>@candidate.BirthDate</td>
-               
+                                <td>@candidate.Recruiter.Name</td>
                                 <td>
                                     <ul>
                                         @foreach (var skill in candidate.CandidateSkills)

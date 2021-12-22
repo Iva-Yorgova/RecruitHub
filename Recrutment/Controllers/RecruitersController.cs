@@ -26,7 +26,8 @@ namespace Recrutment.Controllers
                     Country = r.Country,
                     ExperienceLevel = r.ExperienceLevel,
                     Candidates = r.Candidates,
-                    Interviews = r.Interviews
+                    Interviews = r.Interviews,
+                    FreeInterviewSlots = r.FreeInterviewSlots
                 })
                 .ToList();
 

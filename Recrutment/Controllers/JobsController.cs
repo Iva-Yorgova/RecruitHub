@@ -69,7 +69,7 @@ namespace Recrutment.Controllers
             var candidates = this.data.Candidates
                 .Where(c => c.CandidateSkills.Any(s => jobSkills.Contains(s.Name))).ToList();
 
-            if (candidates.Count() > 0)
+            if (candidates.Count > 0)
             {
                 foreach (var candidate in candidates)
                 {
@@ -82,6 +82,12 @@ namespace Recrutment.Controllers
                         Recruiter = candidate.Recruiter,
                         Job = job
                     };
+
+                    var recruiter = this.data.Recruiters
+                        .FirstOrDefault(r => r.Candidates.Any(c => c.FirstName == candidate.FirstName));
+
+                    recruiter.FreeInterviewSlots--;
+
                     this.data.Interviews.Add(interview);
                 }
             }

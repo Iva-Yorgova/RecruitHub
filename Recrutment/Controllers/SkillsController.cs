@@ -21,8 +21,6 @@ namespace Recrutment.Controllers
 
         public HttpResponse All()
         {
-            
-          
             var skills = this.data
                 .Skills
                 .OrderBy(s => s.Name)
@@ -30,11 +28,13 @@ namespace Recrutment.Controllers
                 {
                     Id = s.Id,
                     Name = s.Name,     
-                    CandidatesNumber = this.data.CandidatesSkills
-                    .Where(x => x.Name == s.Name).Count(),
-                    JobsNumber = this.data.JobsSkills
-                    .Where(x => x.Name == s.Name).Count()
-                 })
+                    CandidatesNumber = this.data.Candidates
+                    .Where(c => c.CandidateSkills.Any(sk => sk.Name == s.Name))
+                    .Count(),
+                    JobsNumber = this.data.Jobs
+                    .Where(c => c.JobSkills.Any(sk => sk.Name == s.Name))
+                    .Count()
+                })
                 .ToList();
 
             return View(skills);

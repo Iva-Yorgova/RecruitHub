@@ -27,7 +27,8 @@ namespace Recrutment.Controllers
                     LastName = c.LastName,
                     Email = c.Email,
                     BirthDate = c.BirthDate,
-                    CandidateSkills = c.CandidateSkills
+                    CandidateSkills = c.CandidateSkills,
+                    Recruiter = c.Recruiter
                 })
                 .ToList();
 
@@ -59,7 +60,7 @@ namespace Recrutment.Controllers
             else
             {
                 recruiter = this.data.Recruiters.FirstOrDefault(r => r.Name == model.RecruiterName);
-                recruiter.ExperienceLevel++;
+                recruiter.ExperienceLevel++;    
             }
 
             var candidate = new Candidate
@@ -69,7 +70,7 @@ namespace Recrutment.Controllers
                 Email = model.Email,
                 BirthDate = model.BirthDate,
                 Bio = model.Bio,
-                Recruiter = recruiter
+                RecruiterId = recruiter.Id
             };
 
             if (model.Skill != null)
@@ -87,6 +88,7 @@ namespace Recrutment.Controllers
             }        
 
             recruiter.Candidates.Add(candidate);
+
 
             this.data.Candidates.Add(candidate);          
 
