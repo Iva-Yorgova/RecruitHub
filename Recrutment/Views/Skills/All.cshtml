@@ -5,11 +5,11 @@
             <div class="mb-5 pb-5 col-md-8 offset-md-2">
 
                 <div class="page-header text-center">
-                    <h2 id="tables">Skills</h2>
+                    <h2 id="tables">All Skills</h2>
                 </div>
 
                 <div class="alert-info p-2 mt-3 mb-3 text-center text-decoration-none">
-                    <a href="/Skills/Active">Active Skills</a>
+                    <a href="/Skills/Active">View Active Skills</a>
                 </div>
 
                 <div class="d-flex justify-content-center">
@@ -28,14 +28,12 @@
                         <tbody>
                             @foreach (var skill in Model)
                             {
-                                @if (skill.CandidatesNumber > 0)
-                                {
+
                                     <tr class="table-light">
                                         <td scope="row">@skill.Name</td>
                                         <td scope="row">@skill.CandidatesNumber</td>
                                         <td scope="row">@skill.JobsNumber</td>
                                     </tr>
-                                }
                             }
                         </tbody>
                     </table>

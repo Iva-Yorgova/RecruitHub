@@ -42,7 +42,7 @@ namespace Recrutment.Controllers
 
         public HttpResponse Active()
         {
-            var skills = this.data
+            var activeSkills = this.data
                 .CandidatesSkills
                 .OrderBy(s => s.Name)
                 .Select(s => new SkillListingViewModel
@@ -56,9 +56,10 @@ namespace Recrutment.Controllers
                     .Where(c => c.JobSkills.Any(sk => sk.Name == s.Name))
                     .Count()
                 })
+                .Where(s => s.CandidatesNumber > 0)
                 .ToList();
 
-            return View(skills);
+            return View(activeSkills);
         }
 
         public HttpResponse Add()
