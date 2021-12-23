@@ -28,13 +28,15 @@
                         <tbody>
                             @foreach (var skill in Model)
                             {
-
-                <tr class="table-light">
-                    <td scope="row">@skill.Name</td>
-                    <td scope="row">@skill.CandidatesNumber</td>
-                    <td scope="row">@skill.JobsNumber</td>
-                </tr>
-}
+                                @if (skill.CandidatesNumber > 0)
+                                {
+                                    <tr class="table-light">
+                                        <td scope="row">@skill.Name</td>
+                                        <td scope="row">@skill.CandidatesNumber</td>
+                                        <td scope="row">@skill.JobsNumber</td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>

@@ -40,6 +40,27 @@ namespace Recrutment.Controllers
             return View(skills);
         }
 
+        public HttpResponse Active()
+        {
+            var skills = this.data
+                .CandidatesSkills
+                .OrderBy(s => s.Name)
+                .Select(s => new SkillListingViewModel
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    CandidatesNumber = this.data.Candidates
+                    .Where(c => c.CandidateSkills.Any(sk => sk.Name == s.Name))
+                    .Count(),
+                    JobsNumber = this.data.Jobs
+                    .Where(c => c.JobSkills.Any(sk => sk.Name == s.Name))
+                    .Count()
+                })
+                .ToList();
+
+            return View(skills);
+        }
+
         public HttpResponse Add()
         {
             return View();
