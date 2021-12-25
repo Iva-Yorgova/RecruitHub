@@ -18,6 +18,7 @@ namespace Recrutment.ViewModels.Candidates
         public string Bio { get; set; }
 
         public string BirthDate { get; set; }
+        public int Interviews { get; set; }
 
         public ICollection<CandidateSkill> CandidateSkills { get; set; } = new List<CandidateSkill>();
 

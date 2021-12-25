@@ -40,7 +40,6 @@
                 .HasForeignKey(r => r.RecruiterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             //modelBuilder
             //    .Entity<Interview>()
             //    .HasOne(i => i.Recruiter)

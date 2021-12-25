@@ -28,7 +28,8 @@ namespace Recrutment.Controllers
                     Email = c.Email,
                     BirthDate = c.BirthDate,
                     CandidateSkills = c.CandidateSkills,
-                    Recruiter = c.Recruiter
+                    Recruiter = c.Recruiter,
+                    Interviews = this.data.Interviews.Where(i => i.CandidateName == c.FirstName + ' ' + c.LastName).Count()
                 })
                 .ToList();
 

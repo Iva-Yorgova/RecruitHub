@@ -15,9 +15,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Birthdate</th>
                                 <th scope="col">Recruiter</th>
+                                <th scope="col">Interviews</th>
                                 <th scope="col">Skills</th>
                             </tr>
                         </thead>
@@ -26,27 +25,30 @@
                             {
                             <tr class="table-light">
                                 <th scope="row">@candidate.FirstName @candidate.LastName</th>
-                                <td>@candidate.Email</td>
-                                <td>@candidate.BirthDate</td>
                                 <td>@candidate.Recruiter.Name</td>
+                                <td>@candidate.Interviews</td>
                                 <td>
-                                    <ul>
+                                    <ul class="list-unstyled p-0">
                                         @foreach (var skill in candidate.CandidateSkills)
                                         {
-                                           <li>@skill.Name</li>
-                                        }
+                            <li>@skill.Name</li>
+                            }
                                     </ul>
                                 </td>
-                                        <td>
-                                            <a class="btn btn-block btn-info text-white mb-3" href="/Skills/Add?id=@candidate.Id">Add Skill</a>
-                                        </td>
+                                <td>
+                                    <a class="btn btn-block btn-success text-white mb-3" href="/Skills/Add?id=@candidate.Id">Add Skill</a>
+                                </td>
 
-                                        <td>
-                                            <a class="btn btn-block btn-primary text-white mb-3" href="/Candidates/Details?id=@candidate.Id">Details</a>
-                                        </td>
-
-
-                                    </tr>
+                                @if (candidate.Interviews == 0)
+                                {
+                                    <td>
+                                        <a class="btn btn-block btn-info text-white mb-3" href="/Interviews/Add?id=@candidate.Id">Add Interview</a>
+                                    </td>
+                                }
+                                <td>
+                                    <a class="btn btn-block btn-primary text-white mb-3" href="/Candidates/Details?id=@candidate.Id">Details</a>
+                                </td>
+                            </tr>
                              }
 
                         </tbody>

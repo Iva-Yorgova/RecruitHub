@@ -41,7 +41,7 @@ namespace Recrutment.Controllers
         [HttpPost]
         public HttpResponse Create(CreateJobFormModel model)
         {
-            // Validation!
+
             if (string.IsNullOrEmpty(model.Title) ||
                 string.IsNullOrEmpty(model.Description) || 
                 string.IsNullOrEmpty(model.Skill) ||
@@ -128,7 +128,37 @@ namespace Recrutment.Controllers
             return View(job);
         }
 
-    
+        public HttpResponse Delete(string id)
+        {
+            var job = this.data
+                .Jobs
+                .Where(j => j.Id == id)
+                .FirstOrDefault();
+
+            foreach (var skill in this.data.JobsSkills)
+            {
+                if (skill.JobId == id)
+                {
+                    this.data.JobsSkills.Remove(skill);
+                }
+            }
+
+            foreach (var interview in this.data.Interviews)
+            {
+                if (interview.JobName == job.Title)
+                {
+                    var recruiter = this.data.Recruiters
+                        .FirstOrDefault(r => r.Name == interview.RecruiterName);
+                    recruiter.FreeInterviewSlots++;
+                    this.data.Interviews.Remove(interview);  
+                }
+            }
+
+            this.data.Jobs.Remove(job);
+            this.data.SaveChanges();
+
+            return Redirect("/Jobs/All");
+        }
 
     }
 }
