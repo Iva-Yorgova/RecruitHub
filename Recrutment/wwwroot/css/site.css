@@ -46,9 +46,15 @@ footer {
 .nav-link {
     color: white;
     text-decoration: none;
+    
 }
-.nav-link:hover {
-    color: white;
+    .nav-link:hover {
+        color: white;
+        border-bottom: 2px solid white;
+    }
+
+.nav-item:hover {
+    border-bottom: 2px solid white;
 }
 
 .navbar-brand {
