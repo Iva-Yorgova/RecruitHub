@@ -23,16 +23,10 @@ namespace Recrutment.ViewModels.Jobs
 
         public string InterviewDate { get; set; }
 
-        public string RecruiterId { get; set; }
+        public string RecruiterName { get; set; }
 
-        public Recruiter Recruiter { get; set; }
+        public string CandidateName { get; set; }
 
-        public string CandidateId { get; set; }
-
-        public Candidate Candidate { get; set; }
-
-        public string JobId { get; set; }
-
-        public Job Job { get; set; }
+        public string JobName { get; set; }
     }
 }

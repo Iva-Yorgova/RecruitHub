@@ -4,11 +4,7 @@ using Recrutment.Data;
 using Recrutment.Data.Models;
 using Recrutment.ViewModels.Candidates;
 using Recrutment.ViewModels.Jobs;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Recrutment.Controllers
 {
@@ -42,8 +38,8 @@ namespace Recrutment.Controllers
 
         public HttpResponse Active()
         {
-            var activeSkills = this.data
-                .CandidatesSkills
+            var skills = this.data
+                .Skills          
                 .OrderBy(s => s.Name)
                 .Select(s => new SkillListingViewModel
                 {
@@ -56,10 +52,10 @@ namespace Recrutment.Controllers
                     .Where(c => c.JobSkills.Any(sk => sk.Name == s.Name))
                     .Count()
                 })
-                .Where(s => s.CandidatesNumber > 0)
+                .Where(skill => skill.CandidatesNumber > 0)
                 .ToList();
 
-            return View(activeSkills);
+            return View(skills);
         }
 
         public HttpResponse Add()

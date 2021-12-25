@@ -90,11 +90,9 @@ namespace Recrutment.Controllers
                         var interview = new Interview
                         {
                             Date = model.InterviewDate,
-                            CandidateId = candidate.Id,
-                            Candidate = candidate,
-                            RecruiterId = candidate.RecruiterId,
-                            Recruiter = candidate.Recruiter,
-                            Job = job
+                            CandidateName = candidate.FirstName + ' ' + candidate.LastName,
+                            RecruiterName = candidate.Recruiter.Name,
+                            JobName = job.Title
                         };
 
                         recruiter.FreeInterviewSlots--;

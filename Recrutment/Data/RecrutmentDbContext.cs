@@ -26,7 +26,7 @@
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Recrutment;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Recruitment;Integrated Security=True;");
             }
         }
 
@@ -41,12 +41,12 @@
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder
-                .Entity<Interview>()
-                .HasOne(i => i.Recruiter)
-                .WithMany(r => r.Interviews)
-                .HasForeignKey(r => r.RecruiterId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder
+            //    .Entity<Interview>()
+            //    .HasOne(i => i.Recruiter)
+            //    .WithMany(r => r.Interviews)
+            //    .HasForeignKey(r => r.RecruiterId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
 
         }

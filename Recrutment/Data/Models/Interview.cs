@@ -16,18 +16,13 @@ namespace Recrutment.Data.Models
         public string Date { get; set; }
 
         [Required]
-        public string RecruiterId { get; set; }
-
-        public Recruiter Recruiter { get; set; }
+        public string RecruiterName { get; set; }
 
         [Required]
-        public string CandidateId { get; set; }
-
-        public Candidate Candidate { get; set; }
+        public string CandidateName { get; set; }
 
         [Required]
-        public string JobId { get; set; }
+        public string JobName { get; set; }
 
-        public Job Job { get; set; }
     }
 }

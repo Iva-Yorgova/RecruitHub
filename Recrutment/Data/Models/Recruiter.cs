@@ -29,8 +29,6 @@ namespace Recrutment.Data.Models
 
         public int FreeInterviewSlots { get; set; } = 5;
 
-        public ICollection<Interview> Interviews { get; set; } = new List<Interview>();
-
         public ICollection<Candidate> Candidates { get; set; } = new List<Candidate>();
     }
 }

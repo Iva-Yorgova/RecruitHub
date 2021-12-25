@@ -26,7 +26,7 @@ namespace Recrutment.Controllers
                     Country = r.Country,
                     ExperienceLevel = r.ExperienceLevel,
                     Candidates = r.Candidates,
-                    Interviews = r.Interviews,
+                    Interviews = this.data.Interviews.Where(i => i.RecruiterName == r.Name).Count(),
                     FreeInterviewSlots = r.FreeInterviewSlots
                 })
                 .ToList();
@@ -48,7 +48,7 @@ namespace Recrutment.Controllers
                     ExperienceLevel = r.ExperienceLevel,
                     FreeInterviewSlots = r.FreeInterviewSlots,
                     Candidates = r.Candidates,
-                    Interviews = r.Interviews                   
+                    Interviews = this.data.Interviews.Where(i => i.RecruiterName == r.Name).Count()
                 })
                 .FirstOrDefault();
 
