@@ -66,7 +66,6 @@ namespace Recrutment.Controllers
         [HttpPost]
         public HttpResponse Add(AddSkillFormModel model, string id)
         {
-
             var candidate = this.data.Candidates
                 .FirstOrDefault(candidate => candidate.Id == id);
 
@@ -102,9 +101,9 @@ namespace Recrutment.Controllers
                     }
                     else
                     {
-                        var jskill = new JobSkill { Name = model.Name };
-                        job.JobSkills.Add(jskill);
-                        if (!this.data.Skills.Any(s => s.Name == jskill.Name))
+                        var newJobSkill = new JobSkill { Name = model.Name };
+                        job.JobSkills.Add(newJobSkill);
+                        if (!this.data.Skills.Any(s => s.Name == newJobSkill.Name))
                         {
                             this.data.Skills.Add(new Skill { Name = model.Name });
                             this.data.SaveChanges();
@@ -121,9 +120,9 @@ namespace Recrutment.Controllers
                     }
                     else
                     {
-                        var cskill = new CandidateSkill { Name = model.Name };
-                        candidate.CandidateSkills.Add(cskill);
-                        if (!this.data.Skills.Any(s => s.Name == cskill.Name))
+                        var newCandidateSkill = new CandidateSkill { Name = model.Name };
+                        candidate.CandidateSkills.Add(newCandidateSkill);
+                        if (!this.data.Skills.Any(s => s.Name == newCandidateSkill.Name))
                         {
                             this.data.Skills.Add(new Skill { Name = model.Name });
                             this.data.SaveChanges();
