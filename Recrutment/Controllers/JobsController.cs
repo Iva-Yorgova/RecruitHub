@@ -135,21 +135,31 @@ namespace Recrutment.Controllers
                 .Where(j => j.Id == id)
                 .FirstOrDefault();
 
-            foreach (var skill in this.data.JobsSkills)
+            var skills = this.data.JobsSkills.ToList();
+
+            foreach (var skill in skills)
             {
                 if (skill.JobId == id)
                 {
-                    this.data.JobsSkills.Remove(skill);
+                    this.data.JobsSkills.Remove(skill); 
                 }
             }
 
-            foreach (var interview in this.data.Interviews)
+            var interviews = this.data.Interviews.ToList();
+
+            foreach (var interview in interviews)
             {
                 if (interview.JobName == job.Title)
                 {
-                    var recruiter = this.data.Recruiters
-                        .FirstOrDefault(r => r.Name == interview.RecruiterName);
-                    recruiter.FreeInterviewSlots++;
+                    var recruiters = this.data.Recruiters
+                        .Where(r => r.Name == interview.RecruiterName)
+                        .ToList();
+            
+                    foreach (var recruiter in recruiters)
+                    {
+                        recruiter.FreeInterviewSlots++;
+                    }
+            
                     this.data.Interviews.Remove(interview);  
                 }
             }
