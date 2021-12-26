@@ -26,7 +26,9 @@ namespace Recrutment.Controllers
                     Title = j.Title,
                     Description = j.Description,
                     Salary = j.Salary,
-                    JobSkills = j.JobSkills
+                    JobSkills = j.JobSkills,
+                    Interviews = this.data.Interviews
+                    .Where(i => i.JobName == j.Title).Count()
                 })
                 .ToList();
 
@@ -102,7 +104,7 @@ namespace Recrutment.Controllers
                     }                   
                 }
             }
-
+            
             this.data.Jobs.Add(job);
 
             this.data.SaveChanges();
