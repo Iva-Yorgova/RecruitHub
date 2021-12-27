@@ -2,6 +2,7 @@
 using MyWebServer.Controllers;
 using MyWebServer.Results.Views;
 using Recrutment.Data;
+using Recrutment.Services;
 using System.Threading.Tasks;
 
 namespace Recrutment
@@ -15,7 +16,8 @@ namespace Recrutment
                     .MapControllers())
                 .WithServices(services => services
                     .Add<RecrutmentDbContext>()
-        
+                    .Add<IValidator, Validator>()
+                    .Add<IPasswordHasher, PasswordHasher>()
                     .Add<IViewEngine, CompilationViewEngine>())
                 .WithConfiguration<RecrutmentDbContext>(context => context.Database.EnsureCreated())
                 .Start();

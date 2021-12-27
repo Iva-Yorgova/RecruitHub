@@ -6,9 +6,10 @@
 
     public class RecrutmentDbContext : DbContext
     {
-        
+        public DbSet<User> Users { get; set; }
+
         public DbSet<Candidate> Candidates { get; set; }
-        
+   
         public DbSet<Job> Jobs { get; set; }
         
         public DbSet<Recruiter> Recruiters { get; set; }
