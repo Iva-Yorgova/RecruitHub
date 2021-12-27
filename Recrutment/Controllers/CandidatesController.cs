@@ -124,7 +124,8 @@ namespace Recrutment.Controllers
                     Email = c.Email,
                     BirthDate = c.BirthDate,
                     CandidateSkills = c.CandidateSkills,
-                    Bio = c.Bio
+                    Bio = c.Bio,
+                    Interviews = this.data.Interviews.Where(i => i.CandidateName == c.FirstName + ' ' + c.LastName).Count()
                 })
                 .FirstOrDefault();
 
