@@ -18,6 +18,6 @@ namespace Recrutment.ViewModels.Jobs
 
         public int Interviews { get; set; }
 
-        public ICollection<Skill> AllSkills { get; set; } = new List<Skill>();
+        public string SkillName { get; set; }
     }
 }

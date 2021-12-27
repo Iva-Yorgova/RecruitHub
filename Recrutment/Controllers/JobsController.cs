@@ -24,7 +24,7 @@ namespace Recrutment.Controllers
                 jobsQuery = jobsQuery.Where(j => j.JobSkills.Any(s => s.Name == skill));
             }
 
-            var jobs = jobsQuery
+            var jobsList = jobsQuery
                 .OrderBy(j => j.Title)
                 .Select(j => new JobListingViewModel
                 {
@@ -34,10 +34,15 @@ namespace Recrutment.Controllers
                     Salary = j.Salary,
                     JobSkills = j.JobSkills,
                     Interviews = this.data.Interviews
-                    .Where(i => i.JobName == j.Title).Count(),
-                    AllSkills = this.data.Skills.ToList()
+                    .Where(i => i.JobName == j.Title).Count()
                 })
                 .ToList();
+
+            var jobs = new AllJobsViewModel
+            {
+                SkillName = skill,
+                Jobs = jobsList
+            };
 
             return View(jobs);
         }
