@@ -103,11 +103,40 @@ namespace Recrutment.Controllers
                     {
                         var newJobSkill = new JobSkill { Name = model.Name };
                         job.JobSkills.Add(newJobSkill);
+                        this.data.SaveChanges();
                         if (!this.data.Skills.Any(s => s.Name == newJobSkill.Name))
                         {
                             this.data.Skills.Add(new Skill { Name = model.Name });
                             this.data.SaveChanges();
                         }
+                        // create interview for candidates who have this skill
+                        var candidates = this.data.Candidates
+                             .Where(c => c.CandidateSkills.Any(s => s.Name ==  newJobSkill.Name)).ToList();
+                        if (candidates.Count > 0)
+                        {
+                            foreach (var item in candidates)
+                            {
+                                var recruiter = this.data.Recruiters
+                                    .FirstOrDefault(r => r.Candidates.Any(c => c.FirstName == item.FirstName));
+
+                                if (recruiter.FreeInterviewSlots > 0)
+                                {
+                                    var interview = new Interview
+                                    {
+                                        Date = model.InterviewDate,
+                                        CandidateName = item.FirstName + ' ' + item.LastName,
+                                        RecruiterName = item.Recruiter.Name,
+                                        JobName = job.Title
+                                    };
+
+                                    recruiter.FreeInterviewSlots--;
+                                    recruiter.ExperienceLevel++;
+
+                                    this.data.Interviews.Add(interview);
+                                }
+                            }
+                        }
+
                         this.data.SaveChanges();
                         return Redirect("/Jobs/All");
                     }           
