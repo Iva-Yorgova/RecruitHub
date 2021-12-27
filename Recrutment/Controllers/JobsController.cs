@@ -114,10 +114,10 @@ namespace Recrutment.Controllers
 
             this.data.SaveChanges();
 
-            if (hasFreeSlots == false)
-            {
-                return Error("This recruiter has no more free interview slots.");
-            }
+            //if (hasFreeSlots == false)
+            //{
+            //    return Error("This recruiter has no more free interview slots.");
+            //}
 
             return Redirect("/Jobs/All");
         }
