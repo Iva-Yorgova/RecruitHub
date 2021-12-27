@@ -15,10 +15,16 @@ namespace Recrutment.Controllers
         public JobsController(RecrutmentDbContext data)
             => this.data = data;
 
-        public HttpResponse All()
+        public HttpResponse All(string skill)
         {
-            var jobs = this.data
-                .Jobs
+            var jobsQuery = this.data.Jobs.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(skill))
+            {
+                jobsQuery = jobsQuery.Where(j => j.JobSkills.Any(s => s.Name == skill));
+            }
+
+            var jobs = jobsQuery
                 .OrderBy(j => j.Title)
                 .Select(j => new JobListingViewModel
                 {
@@ -28,7 +34,8 @@ namespace Recrutment.Controllers
                     Salary = j.Salary,
                     JobSkills = j.JobSkills,
                     Interviews = this.data.Interviews
-                    .Where(i => i.JobName == j.Title).Count()
+                    .Where(i => i.JobName == j.Title).Count(),
+                    AllSkills = this.data.Skills.ToList()
                 })
                 .ToList();
 

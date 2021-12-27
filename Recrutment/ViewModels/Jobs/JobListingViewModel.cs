@@ -17,5 +17,7 @@ namespace Recrutment.ViewModels.Jobs
         public ICollection<JobSkill> JobSkills { get; set; } = new List<JobSkill>();
 
         public int Interviews { get; set; }
+
+        public ICollection<Skill> AllSkills { get; set; } = new List<Skill>();
     }
 }
