@@ -43,6 +43,7 @@ namespace Recrutment.Controllers
         [HttpPost]
         public HttpResponse Create(CreateJobFormModel model)
         {
+            bool hasFreeSlots = true;
 
             if (string.IsNullOrEmpty(model.Title) ||
                 string.IsNullOrEmpty(model.Description) || 
@@ -101,13 +102,22 @@ namespace Recrutment.Controllers
                         recruiter.ExperienceLevel++;
 
                         this.data.Interviews.Add(interview);
-                    }                   
+                    }
+                    else
+                    {
+                        hasFreeSlots = false;
+                    }
                 }
             }
             
             this.data.Jobs.Add(job);
 
             this.data.SaveChanges();
+
+            if (hasFreeSlots == false)
+            {
+                return Error("This recruiter has no more free interview slots.");
+            }
 
             return Redirect("/Jobs/All");
         }
