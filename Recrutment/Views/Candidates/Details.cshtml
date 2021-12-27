@@ -38,11 +38,18 @@
 
                             @foreach (var skill in Model.CandidateSkills)
                             {
-                <button type="button" class="list-group-item list-group-item-action" disabled>@skill.Name</button>
-                }
+                    <button type="button" class="list-group-item list-group-item-action" disabled>@skill.Name</button>
+                    }
                         </div>
 
-                        <a href="/Candidates/Edit?id=@Model.Id" class="btn btn-primary mt-5">Edit</a>
+                        @if (Model.Interviews == 0)
+                        {
+
+                    <a class="btn btn-block btn-success text-white mb-2 mt-3 w-50  centered" href="/Interviews/Add?id=@Model.Id">Add Interview</a>
+                    }
+
+                        <a href="/Candidates/Edit?id=@Model.Id" class="btn btn-primary mt-3">Edit</a>
+
                     </div>
 
                 </div>
