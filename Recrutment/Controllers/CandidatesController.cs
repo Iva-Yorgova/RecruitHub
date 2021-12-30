@@ -159,13 +159,22 @@ namespace Recrutment.Controllers
             //{
             //    return View(template);
             //}
-
+           
             var candidateData = this.data.Candidates
                 .FirstOrDefault(t => t.Id == model.Id);
 
             if (candidateData == null)
             {
                 return Error("Candidate not found.");
+            }
+
+            if (string.IsNullOrEmpty(model.FirstName) ||
+                string.IsNullOrEmpty(model.LastName) ||
+                string.IsNullOrEmpty(model.Email) ||
+                string.IsNullOrEmpty(model.Bio) ||
+                string.IsNullOrEmpty(model.BirthDate))
+            {
+                return Error("All fields are required!");
             }
 
             candidateData.FirstName = model.FirstName;
@@ -179,6 +188,27 @@ namespace Recrutment.Controllers
                 candidateData.CandidateSkills.Add(new CandidateSkill { Name = model.Skill });
             }
 
+            this.data.SaveChanges();
+
+            return Redirect("/Candidates/All");
+        }
+
+        public HttpResponse Delete(string id)
+        {
+            var candidate = this.data.Candidates
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+
+            var candidateSkills = this.data.CandidatesSkills
+                .Where(s => s.CandidateId == id)
+                .ToList();
+
+            foreach (var skill in candidateSkills)
+            {
+                this.data.CandidatesSkills.Remove(skill);
+            }
+
+            this.data.Candidates.Remove(candidate);
             this.data.SaveChanges();
 
             return Redirect("/Candidates/All");
