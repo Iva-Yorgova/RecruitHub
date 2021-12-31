@@ -13,10 +13,22 @@ namespace Recrutment.Controllers
         public RecruitersController(RecrutmentDbContext data)
             => this.data = data;
 
-        public HttpResponse All()
+        public HttpResponse All(string level)
         {
-            var recruiters = this.data
-                .Recruiters
+            var recruitersQuery = this.data.Recruiters.AsQueryable();
+
+            int levelNum = 0;
+
+            if (!string.IsNullOrWhiteSpace(level))
+            {
+                levelNum = int.Parse(level);
+                if (levelNum > 0)
+                {
+                    recruitersQuery = recruitersQuery.Where(r => r.ExperienceLevel == levelNum);
+                }
+            }
+
+            var recruitersList = recruitersQuery
                 .OrderBy(r => r.Name)
                 .Select(r => new RecruiterListingViewModel
                 {
@@ -30,6 +42,12 @@ namespace Recrutment.Controllers
                     FreeInterviewSlots = r.FreeInterviewSlots
                 })
                 .ToList();
+
+            var recruiters = new AllRecruitersViewModel
+            {
+                Level = levelNum,
+                Recruiters = recruitersList
+            };
 
             return View(recruiters);
         }

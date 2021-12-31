@@ -100,7 +100,11 @@ namespace Recrutment.Controllers
             else
             {
                 candidate.CandidateSkills.Add(new CandidateSkill{ Name = model.Skill });
-            }               
+            }
+            
+            // Check if there is a job with skills that candidate have
+
+
 
             recruiter.Candidates.Add(candidate);
 
