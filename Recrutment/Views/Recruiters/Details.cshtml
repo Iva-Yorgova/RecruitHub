@@ -1,0 +1,44 @@
+﻿
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="mb-5 pb-5 col-md-8 offset-md-2">
+
+                <nav aria-label="breadcrumb mt-5 mb-5">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Recruiters/All">Recruiters</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Details</li>
+                    </ol>
+                </nav>
+
+                <div class="page-header text-center mt-5">
+                    <h2 id="tables">Recruiter Details</h2>
+                </div>
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5 class="card-title">@Model.Name </h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span class="text-black-50">Email: </span> @Model.Epost</li>
+                            <li class="list-group-item"><span class="text-black-50">Country: </span> @Model.Country</li>
+                            <li class="list-group-item">
+                                <span class="text-black-50">Experience Level: </span> @Model.ExperienceLevel
+                            </li>
+                            <li class="list-group-item">
+                                <span class="text-black-50">Candidates: </span> @Model.Candidates.Count()
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-0 card-body">
+
+                        <a href="/Recruiters/Edit?id=@Model.Id" class="btn btn-primary">Edit</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

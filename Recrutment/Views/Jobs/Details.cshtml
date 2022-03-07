@@ -1,0 +1,51 @@
+﻿
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="mb-5 pb-5 col-md-8 offset-md-2">
+
+                <nav aria-label="breadcrumb mt-5 mb-5">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/Jobs/All">Jobs</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Details</li>
+                    </ol>
+                </nav>
+
+                <div class="page-header text-center mb-5 mt-5">
+                    <h2 id="tables">Job Details</h2>
+                </div>
+
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5 class="card-title">@Model.Title </h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span class="text-black-50">Description: </span>@Model.Description</li>
+                            <li class="list-group-item"><span class="text-black-50">Salary: </span> @Model.Salary</li>
+                            <li class="list-group-item"></li>
+                        </ul>
+                    </div>
+                    <div class="pt-0 card-body">
+
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action active bg-info">
+                                Skills
+                            </button>
+
+                            @foreach (var skill in Model.JobSkills)
+                            {
+                <button type="button" class="list-group-item list-group-item-action" disabled>@skill.Name</button>
+                }
+                        </div>
+
+                        <a href="/Jobs/Edit?id=@Model.Id" class="btn btn-primary mt-5">Delete</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

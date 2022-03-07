@@ -1,0 +1,72 @@
+﻿<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="mb-5 pb-5 col-lg-12">
+                <div class="page-header text-center">
+                    <h2 id="tables">Recruiters</h2>
+                </div>
+
+                <form class="mx-auto w-50 mt-2" method="get">
+                    <div class="form-group">
+                        <div class="text-dark d-flex justify-content-center">
+                            <label for="name" class="h4 mb-2">Filter Recruiters By Experience Level</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" name="level" />
+
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-block btn-primary text-white" value="search">Search</button>
+                    </div>
+                </form>
+
+                <div class="page-header text-center mt-5">
+                    @if (Model.Level <= 0)
+                    {
+            <h2 id="tables" class="text-info btn-light text-md-center p-2">All Recruiters</h2>
+            }
+                    @if (Model.Level > 0)
+                    {
+            <h2 id="tables" class="text-info btn-light text-md-center p-2">Recruiters with Experience Level @Model.Level</h2>
+            }
+                </div>
+
+
+                <!--<div class="d-flex justify-content-center">
+        <a class="btn btn-block btn-primary text-white mb-3" href="/Recruiters/Create">Create Recruiter</a>
+    </div>-->
+
+                <div class="component">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Experience Level</th>
+                                <th scope="col">Candidates</th>
+                                <th scope="col">Interviews</th>
+                                <th scope="col">Free Slots</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var recruiter in Model.Recruiters)
+                            {
+                <tr class="table-light">
+                    <th scope="row">@recruiter.Name</th>
+                    <td>@recruiter.Country</td>
+                    <td>@recruiter.ExperienceLevel</td>
+                    <td>@recruiter.Candidates.Count()</td>
+                    <td>@recruiter.Interviews</td>
+                    <td>@recruiter.FreeInterviewSlots</td>
+                    <td>
+                        <a class="btn btn-block btn-primary text-white mb-3" href="/Recruiters/Details?id=@recruiter.Id">Details</a>
+                    </td>
+                </tr>
+}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
