@@ -1,3 +1,10 @@
+# RecruitHub
+A new system for helping HR companies with managing a number of available jobs, 
+the recruiters and candidates with their skills.
+
+
+
+
 # C# Web Server
 
 A simple C# web server created for educational purposes.
