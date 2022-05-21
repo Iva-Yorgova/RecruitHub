@@ -1,7 +1,24 @@
 # RecruitHub
+Web Application
 
 A new and effective system for helping HR companies with managing 
 a number of available jobs, the recruiters and candidates with their skills.
+
+# Technology stack:
+
+    ASP.NET Core 5.0
+
+    Entity Framework Core 5.0
+
+    SQL Server
+
+    JavaScript
+
+    jQuery
+
+    Bootstrap
+
+# Screenshots:
 
 ![Home Page](https://user-images.githubusercontent.com/84331691/169644096-9eadff0f-2ee4-4c3e-a236-1133bdc0f176.jpg)
 
