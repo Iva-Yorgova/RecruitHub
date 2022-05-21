@@ -1,7 +1,11 @@
 # RecruitHub
-A new system for helping HR companies with managing a number of available jobs, 
-the recruiters and candidates with their skills.
 
+A new and effective system for helping HR companies with managing 
+a number of available jobs, the recruiters and candidates with their skills.
+
+![Home Page](https://user-images.githubusercontent.com/84331691/169644096-9eadff0f-2ee4-4c3e-a236-1133bdc0f176.jpg)
+
+![Candidates](https://user-images.githubusercontent.com/84331691/169644105-41070554-eaa3-4c20-868c-5cadd2c13d83.jpg)
 
 
 
