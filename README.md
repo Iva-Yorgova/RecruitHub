@@ -3,9 +3,9 @@
 A new and effective system for helping HR companies with managing 
 a number of available jobs, the recruiters and candidates with their skills.
 
-| ![Home Page](https://user-images.githubusercontent.com/84331691/169644096-9eadff0f-2ee4-4c3e-a236-1133bdc0f176.jpg) |
+![Home Page](https://user-images.githubusercontent.com/84331691/169644096-9eadff0f-2ee4-4c3e-a236-1133bdc0f176.jpg)
 
-| ![Candidates](https://user-images.githubusercontent.com/84331691/169644105-41070554-eaa3-4c20-868c-5cadd2c13d83.jpg) |
+![Candidates](https://user-images.githubusercontent.com/84331691/169644105-41070554-eaa3-4c20-868c-5cadd2c13d83.jpg)
 
 ![Create Candidate](https://user-images.githubusercontent.com/84331691/169644170-790c59ed-2758-47bf-88bf-2c7d4bf09c52.jpg)
 
