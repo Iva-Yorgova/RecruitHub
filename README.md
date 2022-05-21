@@ -7,6 +7,8 @@ a number of available jobs, the recruiters and candidates with their skills.
 
 ![Candidates](https://user-images.githubusercontent.com/84331691/169644105-41070554-eaa3-4c20-868c-5cadd2c13d83.jpg)
 
+Create Candidate
+![Create Candidate](https://user-images.githubusercontent.com/84331691/169644170-790c59ed-2758-47bf-88bf-2c7d4bf09c52.jpg)
 
 
 # C# Web Server
