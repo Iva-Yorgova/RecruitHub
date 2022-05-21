@@ -7,10 +7,17 @@ a number of available jobs, the recruiters and candidates with their skills.
 
 ![Candidates](https://user-images.githubusercontent.com/84331691/169644105-41070554-eaa3-4c20-868c-5cadd2c13d83.jpg)
 
-Create Candidate
 ![Create Candidate](https://user-images.githubusercontent.com/84331691/169644170-790c59ed-2758-47bf-88bf-2c7d4bf09c52.jpg)
 
+![Recruiters](https://user-images.githubusercontent.com/84331691/169644195-df0baac2-543e-419e-a78c-27ff22704847.jpg)
 
+![Jobs](https://user-images.githubusercontent.com/84331691/169644209-e2b7ead5-7095-4afb-96b3-4ae299acebf6.jpg)
+
+![Interviews](https://user-images.githubusercontent.com/84331691/169644215-8e93df52-82e2-403e-b2b1-cc76b6504bf9.jpg)
+
+![Skills](https://user-images.githubusercontent.com/84331691/169644219-9637ae1c-c1f7-402f-afd9-d92d064c962c.jpg)
+
+---
 # C# Web Server
 
 A simple C# web server created for educational purposes.
