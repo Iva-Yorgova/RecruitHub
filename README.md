@@ -1,8 +1,8 @@
 # RecruitHub
 Web Application
 
-A new and effective system for helping HR companies with managing 
-a number of available jobs, the recruiters and candidates with their skills.
+RecruitHub is an innovative and effective application for helping HR companies 
+with managing a number of available jobs, recruiters, and candidates with their skills.
 
 # Technology stack:
 
