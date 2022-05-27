@@ -17,6 +17,10 @@ with managing a number of available jobs, recruiters, and candidates with their 
     jQuery
 
     Bootstrap
+    
+# Video: 
+https://user-images.githubusercontent.com/84331691/170736785-5620224a-aa58-4ffb-9b71-e896f3f768a9.mp4
+
 
 # Screenshots:
 
