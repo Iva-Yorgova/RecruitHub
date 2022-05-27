@@ -18,10 +18,7 @@ with managing a number of available jobs, recruiters, and candidates with their 
 
     Bootstrap
     
-# Video:
-https://user-images.githubusercontent.com/84331691/170740399-9b5f1d05-ad80-44d1-bf5b-b3228aaaeac0.mp4
-
-
+    
 # Screenshots:
 
 ![Home Page](https://user-images.githubusercontent.com/84331691/169644096-9eadff0f-2ee4-4c3e-a236-1133bdc0f176.jpg)
